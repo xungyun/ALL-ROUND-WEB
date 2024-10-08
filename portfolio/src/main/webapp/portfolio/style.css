@@ -1,0 +1,381 @@
+@font-face {
+    font-family: 'NEXONFootballGothicBA1';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXONFootballGothicBA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh; /* 전체 화면 높이를 사용 */
+    display: flex;
+    flex-direction: column;
+}
+
+.logo h1 {
+    color: white; /* 글씨 색상 */
+    margin: 0; /* 여백 제거 */
+    font-size: 2em; /* 폰트 크기 조정 */
+    text-align: center;
+    display: flex;
+    font-family: 'NEXONFootballGothicBA1';
+    letter-spacing: 3px;
+}
+
+.logo a {
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    text-align: center;
+}
+
+.logo a:hover h1 {
+    opacity: 0.8; /* 마우스 오버 시 약간 투명하게 */
+}
+
+header {
+    background: #000000;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background: #555;
+}
+
+.main-section {
+    /*padding: 20px;*/
+    text-align: center;
+    flex: 1;
+}
+
+.main-section h2 {
+    color: #333;
+}
+
+footer {
+    background: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    margin-top: auto; /* 남은 공간을 사용하여 아래로 밀기 */
+}
+
+.sidebar {
+    margin-right: 20px; /* 로고와 메뉴 사이의 간격 조정 */
+}
+
+.menu-toggle {
+    background: black;
+    color: #fff;
+    border: none;
+    /*padding-left: 10px;*/
+    cursor: pointer;
+    font-size: 2em;
+    /* width: 100px;  버튼 너비 조절 */
+    /*margin-bottom: 6px;*/
+    margin-left:10px;
+}
+
+.submenu {
+    display: none; /* 기본적으로 숨김 */
+    background: #555;
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 0; /* 초기 높이 설정 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+    transition: max-height 0.3s ease; /* 애니메이션 효과 */
+}
+
+.submenu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s;
+}
+
+.submenu.show {
+    display: block; /* 블록으로 표시 */
+    max-height: 200px; /* 최대 높이 설정 */
+}
+
+.submenu a:hover {
+    background: #666;
+}
+
+.auth-buttons {
+    padding-right: 50px;
+    margin-left: auto; /* 오른쪽 정렬 */
+}
+
+.auth-buttons a {
+    color: white; /* 텍스트 색상 흰색으로 변경 */
+    text-decoration: none; /* 기본 밑줄 제거 */
+    padding: 10px 15px; /* 버튼의 패딩 조정 */
+    border: 1px solid white; /* 흰색 테두리 추가 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    transition: background 0.3s, color 0.3s; /* 배경과 텍스트 색상 전환 효과 */
+}
+
+.auth-buttons a:hover {
+    background: rgba(255, 255, 255, 0.2); /* 호버 시 배경색 추가 */
+}
+
+.modal-overlay,
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 화면에 고정 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    left: 50%; /* 왼쪽 50% */
+    top: 50%; /* 위쪽 50% */
+    width: 300px; /* 모달 너비 */
+    max-width: 90%; /* 최대 너비 설정 (반응형) */
+    height: auto; /* 높이는 자동 조정 */
+    background-color: #fff; /* 배경색 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    padding: 20px; /* 내부 패딩 */
+    border-radius: 8px; /* 모서리 둥글기 */
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+}
+
+.modal-content {
+	font-family: 'NEXONFootballGothicBA1';
+    background-color: #fefefe;
+    margin: 15% auto; /* 위에서 15%, 수평 중앙 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 너비 조정 */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-container {
+    width: 300px; /* 폼 너비 */
+    margin: 100px auto; /* 중앙 정렬 유지 */
+    padding: 20px; /* 내부 여백 */
+    background-color: #fff; /* 흰색 배경 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+h2 {
+    text-align: center; /* 제목 중앙 정렬 */
+}
+
+label {
+    display: block; /* 라벨 블록 형태로 배치 */
+    margin: 10px 0 5px; /* 간격 조정 */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 92.5%; /* 전체 너비 사용 */
+    padding: 10px; /* 패딩 추가 */
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* 테두리 */
+    border-radius: 4px; /* 모서리 둥글게 */
+}
+
+button {
+    width: 100%; /* 버튼 전체 너비 사용 */
+    padding: 10px; /* 패딩 추가 */
+    background-color: #333;
+    color: #fff; /* 글자색 */
+    border: none; /* 테두리 없음 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서 포인터 */
+    font-family: 'NEXONFootballGothicBA1';
+}
+
+/*button:hover {
+     background-color: #555;  호버 시 배경색 
+}*/
+
+p {
+    text-align: center; /* 문단 중앙 정렬 */
+}
+
+a {
+    color: #333; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
+
+.btn-container {
+    text-align: center; /* 버튼을 가운데 정렬 */
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px; /* 버튼과 텍스트 사이의 간격 */
+    padding: 10px 20px; /* 버튼 패딩 */
+    margin-left:15px;
+    background-color: #333; /* 버튼 배경색 */
+    color: #fff; /* 버튼 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    transition: background 0.3s; /* 호버 효과 */
+}
+
+.btn:hover {
+    background-color: #555; /* 호버 시 배경색 변경 */
+}
+
+/*.match-section ul, .team-section ul,*/
+.job-listing ul,
+.match-listing ul {
+    list-style-type: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 패딩 제거 */
+}
+
+/*.match-section li, .team-section li,*/
+.job-listing li,
+.match-listing li {
+    border-bottom: 1px solid #ccc; /* 아래쪽 선 추가 */
+    padding: 15px 0; /* 여백 추가 */
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: blue;
+}
+
+.pagination span {
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.title {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin: 20px 0; /* 위아래 여백 설정 */
+}
+
+.title h1 {
+    font-size: 2.5em; /* 제목 글자 크기 */
+    font-weight: bold; /* 제목 글자 두께 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 10px; /* 제목과 문단 사이 여백 */
+}
+
+.title p {
+    font-size: 1.2em; /* 문단 글자 크기 */
+    color: #666; /* 문단 색상 */
+    margin: 5px 0; /* 문단 사이 여백 */
+}
+
+.job-type-select a {
+    font-size: 20px; /* 원하는 크기로 조정 */
+    font-weight: bold; /* 두껍게 만들기 */
+    margin-right: 15px; /* 간격 조정 */
+    color: blue;
+}
+
+.team-type-select a {
+    font-size: 20px; /* 글씨 크기 */
+    margin-right: 15px; /* 간격 조정 */
+    font-weight: bold; /* 두껍게 만들기 */
+    text-decoration: none; /* 밑줄 제거 */
+    color: blue; /* 링크 색상 */
+}
+
+.team-type-select a:hover {
+    text-decoration: underline; /* 호버 시 밑줄 */
+}
+
+.recruitment-list ul {
+    list-style-type: none; /* 점 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    margin: 0; /* 기본 마진 제거 */
+}
+
+.recruitment-list li {
+    margin-bottom: 10px; /* 항목 간 간격 조정 (필요시) */
+}
+
+/* 검색 결과 스타일 */
+ul {
+    list-style-type: none; /* 점 없애기 */
+    padding: 0; /* 기본 패딩 제거 */
+}
+
+.header-container {
+    display: flex;
+    flex: 3;
+    justify-content: center;
+    align-items: center; /* 수평 중앙 정렬 */
+}
+
+.search-container {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    /* margin-top: 10px;  필요시 여백 조정 */
+    line-height: 110px;
+    /*margin-right:50px;*/
+}
+
+.search-container .inputt {
+	margin-top:10px;
+    width: 300px; /* 검색창 너비 */
+    padding: 10px; /* 패딩 추가 */
+    border: 1px solid #ccc; /* 테두리 스타일 */
+    border-radius: 4px; /* 모서리 둥글게 */
+}
+
+.search-container button {
+	width:50px;
+	padding: 10px;
+	margin-top:10px;
+	margin-bottom: 10px;
+    /*padding: 10px 15px;  버튼 패딩 */
+    border: none; /* 테두리 없음 */
+    background-color: #333; /* 버튼 배경색 */
+    color: white; /* 버튼 글자색 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 포인터 커서 */
+    margin-left: 10px; /* 버튼과 검색창 간격 */
+}
+
+.search-container button:hover {
+    background-color: #555; /* 버튼 호버 색상 */
+}
+
